@@ -35,13 +35,10 @@ public class NBRBService {
         List<RateShort> rateShorts;
         LocalDate startDate= LocalDate.parse(start);
         LocalDate endDate=LocalDate.parse(end);
-        System.out.println("start " + start+ " end "+ end);
         List<RateShort> rates=new ArrayList<>();
         if(endDate.minusDays(365).isAfter(startDate)){
             rates=getRatesShort(id,startDate.plusDays(365).toString(),endDate.toString());
         }
-        System.out.println(LocalDate.ofEpochDay(startDate.toEpochDay()));
-        System.out.println(startDate.toEpochDay());
         try {
             rateShorts=api.getRatebyIdAndDate(id,startDate,endDate);
         } catch (IOException e) {
