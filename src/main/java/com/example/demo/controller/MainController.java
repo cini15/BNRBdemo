@@ -39,16 +39,15 @@ public class MainController {
         if (end == null)
             end = now.toString();
         List<Rate> ratesList = service.getRatesList();
-        if (id == null)
-            id = ratesList.get(1).getId();
+        id = validId(id, ratesList);
 
         LocalDate startDate= LocalDate.parse(start);
         LocalDate endDate=LocalDate.parse(end);
-        if(endDate.isAfter(now)) {
+        if (endDate.isAfter(now)) {
             end = now.toString();
-            endDate=now;
+            endDate = now;
         }
-        if(startDate.isAfter(endDate) | startDate.isEqual(endDate)) {
+        if (startDate.isAfter(endDate) | startDate.isEqual(endDate)) {
             start = endDate.minusDays(3).toString();
         }
         List<RateShort> ratesShort = service.getRatesShort(id, start, end);
@@ -61,4 +60,15 @@ public class MainController {
         return "api";
     }
 
+    private Integer validId(Integer id, List<Rate> ratesList) {
+        if (id == null) {
+            id = ratesList.get(0).getId();
+            return id;
+        }
+        Rate rate = new Rate();
+        rate.setId(id);
+        if(!ratesList.contains(rate))
+            id = ratesList.get(0).getId();
+        return id;
+    }
 }
