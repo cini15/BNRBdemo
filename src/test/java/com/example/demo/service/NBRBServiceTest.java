@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.RateShort;
 import com.example.demo.repo.NBRBApi;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +26,8 @@ class NBRBServiceTest {
 
     @Test
     void getRatesShort() {
-        service.getRatesShort(290,"2020-12-1","2020-12-20");
+        String start = "2020-11-03";
+        String end = "2020-12-20";
+        service.getRatesShort(290, start, end);
     }
 }

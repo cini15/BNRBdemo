@@ -14,64 +14,53 @@
             ratesShort.push(["[(${n.date})]", [(${n.rate})]])
             /*[/]*/
         }
-
     </script>
 </head>
 <body>
-<div class="container">
-    <div class="main-form">
-        <form id="rate-f" method="get">
-            <table>
-                <tr>
-                    <td>
-                        <div class="form_field">Валюта
 
-                        </div>
-                    </td>
-                    <td>
-                        <select class="field_input" id="id" name="id">
-                            <option
-                                    th:each="cur : ${currency}"
-                                    th:selected="${id==cur.id}"
-                                    th:text="${cur.name}"
-                                    th:value="${cur.id}">currency
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form_field">Дато от
+<div class="main-form">
+    <form id="rate-f" method="get">
+        <table>
+            <tr>
+                <td>
+                    <div class="form_field">Валюта
+                    </div>
+                </td>
+                <td>
+                    <select class="field_input" id="id" name="id">
+                        <option
+                                th:each="cur : ${currency}"
+                                th:selected="${id==cur.id}"
+                                th:text="${cur.name}"
+                                th:value="${cur.id}">currency
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form_field">Дато от
+                    </div>
+                </td>
+                <td>
+                    <input class="field_input" type="date" name="start" th:max="${now}" th:value="${start}">
 
-                        </div>
-                    </td>
-                    <td>
-                        <input class="field_input" type="date" name="start" th:max="${now}" th:value="${start}" >
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form_field">Дата до
-
-                        </div>
-                    </td>
-                    <td>
-
-                        <input class="field_input" type="date" name="end" th:max="${now}" th:value="${end}">
-
-                    </td>
-                </tr>
-            </table>
-            <input class="button" type="submit" form="rate-f" value="Выполнить">
-        </form>
-    </div>
-    <div class="error" >
-    </div>
-
-    <div id="chart_div"></div>
-
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form_field">Дата до
+                    </div>
+                </td>
+                <td>
+                    <input class="field_input" type="date" name="end" th:max="${now}" th:value="${end}">
+                </td>
+            </tr>
+        </table>
+        <input class="button" type="submit" form="rate-f" value="Выполнить">
+    </form>
 </div>
+<div id="chart_div"></div>
 
 </body>
 </html>

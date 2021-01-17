@@ -7,6 +7,7 @@
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     display: block;
 
 }
@@ -40,6 +41,13 @@ form{
 }
 
 @media (max-width:780px ) {
+    .main-form{
+        padding: 3px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
     
 }
 @media (max-width: 460px) {
